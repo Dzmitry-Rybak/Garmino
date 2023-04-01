@@ -1,0 +1,76 @@
+{
+    "catalog": [
+        {
+        "img": "img/product.png",
+        "alt": "product",
+        "subtitle":"Heart rate monitor Polar FT40",
+        "descr":"For the first steps in heart rate-based training.",
+        "oldPrice":"67&#36",
+        "newPrice":"45&#36",
+        "parent":"[data-tab='fitness']"  
+        },
+        {
+        "img": "img/product.png",
+        "alt": "product",
+        "subtitle":"Heart rate monitor Polar FT30",
+        "descr":"For the first steps in heart rate-based training.",
+        "oldPrice":"67&#36",
+        "newPrice":"45&#36",
+        "parent":"[data-tab='running']"  
+        },
+        {
+        "img": "img/product.png",
+        "alt": "product",
+        "subtitle":"Heart rate monitor Polar FT90",
+        "descr":"For the first steps in heart rate-based training.",
+        "oldPrice":"67&#36",
+        "newPrice":"45&#36",
+        "parent":"[data-tab='fitness']"  
+        },
+        {
+        "img": "img/product.png",
+        "alt": "product",
+        "subtitle":"Heart rate monitor Polar FT420",
+        "descr":"For the first steps in heart rate-based training.",
+        "oldPrice":"67&#36",
+        "newPrice":"45&#36",
+        "parent":"[data-tab='fitness']"  
+        },
+        {
+        "img": "img/product.png",
+        "alt": "product",
+        "subtitle":"Heart rate monitor Polar FT410",
+        "descr":"For the first steps in heart rate-based training.",
+        "oldPrice":"67&#36",
+        "newPrice":"45&#36",
+        "parent":"[data-tab='fitness']"  
+        },
+        {
+        "img": "img/product.png",
+        "alt": "product",
+        "subtitle":"Heart rate monitor Polar FT940",
+        "descr":"For the first steps in heart rate-based training.",
+        "oldPrice":"67&#36",
+        "newPrice":"45&#36",
+        "parent":"[data-tab='triathlon']"  
+        },
+        {
+        "img": "img/product.png",
+        "alt": "product",
+        "subtitle":"Heart rate monitor Polar FT1",
+        "descr":"For the first steps in heart rate-based training.",
+        "oldPrice":"67&#36",
+        "newPrice":"45&#36",
+        "parent":"[data-tab='fitness']"  
+        },
+        {
+        "img": "img/product.png",
+        "alt": "product",
+        "subtitle":"Heart rate monitor Polar FT5",
+        "descr":"For the first steps in heart rate-based training.",
+        "oldPrice":"67&#36",
+        "newPrice":"45&#36",
+        "parent":"[data-tab='triathlon']"  
+        }
+    ]
+}

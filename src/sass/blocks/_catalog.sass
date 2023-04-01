@@ -1,0 +1,125 @@
+.catalog
+    padding-bottom: 79px
+    &__content
+        display: none
+        grid-template-columns: repeat(3, 1fr)
+        gap: 17px
+        grid-auto-rows: 1fr
+        &_active
+            display: grid
+    &__tabs
+        list-style: none
+        padding-left: 0
+        margin-top: 46px
+        margin-bottom: 57px
+        display: flex
+        text-align: center
+        justify-content: center
+        
+    &__tab
+        width: 223px
+        height: 52px
+        font-size: 18px
+        font-weight: 400
+        line-height: 52px
+        text-transform: uppercase
+        color: #6B6B6B
+        border: 2px solid #D0D0D0
+        transform: skew(-25deg)
+        margin: 0 10px
+        transition: .5s all
+        cursor: pointer
+        div
+            transform: skew(25deg)
+        &:hover
+            box-shadow: 2px 2px 10px #c70101
+        &_active
+            background-color: #C70101
+            color:  #FFFFFF
+            border: none
+            &:hover
+                box-shadow: none
+    &-item
+        width: 303px
+        min-height: 442px
+        padding: 20px 18px 21px 23px
+        border: 2px solid #E8E8E8
+        overflow: hidden
+        
+        &__img
+            display: block
+            margin: 0 auto
+        &__subtitle
+            margin-top: 17px
+            font-weight: 700
+            font-size: 16px
+            text-align: center
+        &__descr
+            font-weight: 300
+            font-size: 14px
+            text-align: center
+            margin-top: 15px
+        &__link
+            display: block
+            margin-top: 10px
+            font-weight: 500
+            font-size: 14px
+            text-align: center
+            color: #C70101
+        &__footer
+            display: flex
+            justify-content: space-between
+        &__old-price
+            font-weight: 300
+            font-size: 14px    
+            text-decoration-line: line-through
+            color: #555555
+        &__new-price
+            font-weight: 700
+            font-size: 20px
+            color: #050505
+        &__wrapper
+            display: flex
+            width: calc(200% + 40px)
+        &__content
+            width: 50%
+            margin-right: 0px
+            transform: translateX(-100%)
+            transition: .5s all
+            &_active
+                transform: translateX(0%)
+                margin-right: 30px
+        &__list
+            width: 50%
+            transform: translateX(0%)
+            list-style-type: none
+            padding-left: 20px
+            padding-right: 20px
+            transition: .5s all
+            margin-bottom: 0
+            &_active
+                transform: translateX(-100%)
+            li
+                position: relative
+                font-weight: 300
+                font-size: 14px
+                color: #555555
+                padding-bottom: 10px
+                &:before
+                    content: ''
+                    position: absolute
+                    width: 5px
+                    height: 5px
+                    left: -14px
+                    top: 7px
+                    background-color: #C70101
+            &__link
+                position: absolute
+                bottom: 0
+                left: 50%
+                transform: translateX(-50%)
+                color: #C70101
+
+
+
+            

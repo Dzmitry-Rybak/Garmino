@@ -1,0 +1,33 @@
+.pageup
+    display: none
+    position: fixed
+    bottom: 50px
+    cursor: pointer
+
+.pageup_show 
+  animation-name: fadeIn
+  animation-duration: 0.5s
+  animation-fill-mode: forwards
+
+.pageup_hide 
+  animation-name: fadeOut
+  animation-duration: 0.5s
+  animation-fill-mode: forwards
+
+@keyframes fadeIn 
+  from 
+    right: -50px
+    opacity: 0
+  to 
+    right: 50px
+    opacity: 1
+  
+@keyframes fadeOut 
+  from 
+    right: 50px
+    opacity: 1
+  to 
+    right: -50px
+    opacity: 0
+  
+
