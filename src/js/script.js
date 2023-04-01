@@ -21,14 +21,14 @@ window.addEventListener('DOMContentLoaded', () => {
                             <img src=${this.src} alt=${this.alt} class="catalog-item__img">
                             <div class="catalog-item__subtitle">${this.subtitle}</div>
                             <div class="catalog-item__descr">${this.descr}</div>
-                            <a href="" data-link="more" class="catalog-item__link">MORE DETAILS</a>
+                            <a href="" class="catalog-item__link">MORE DETAILS</a>
                         </div>
                         <ul class="catalog-item__list">
                             <li>During your workout, you will hear an audio alert for your target heart rate;</li>
                             <li>You will see an informative graphical indicator of target heart rate training zones.</li>
                             <li>You will also see information about calorie expenditure during the workout.</li>
                             <li>You will be able to view data for 10 workouts.</li>
-                            <a href="" data-link="back" class="catalog-item__list__link">BACK</a>
+                            <a href="" class="catalog-item__list__link">BACK</a>
                         </ul>
                     </div>
                     <hr>
@@ -47,88 +47,48 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     
 
-    new Product (
-        "img/product.png",
-        "product",
-        "Heart rate monitor Polar FT40",
-        "For the first steps in heart rate-based training.",
-        '67&#36',
-        '45&#36',
-        '[data-tab="fitness"]'
-    ).render();
-    new Product (
-        "img/product.png",
-        "product",
-        "Heart rate monitor Polar FT40",
-        "For the first steps in heart rate-based training.",
-        '67&#36',
-        '45&#36',
-        '[data-tab="fitness"]'
-    ).render();
-    new Product (
-        "img/product.png",
-        "product",
-        "Heart rate monitor Polar FT40",
-        "For the first steps in heart rate-based training.",
-        '67&#36',
-        '45&#36',
-        '[data-tab="fitness"]'
-    ).render();
-    new Product (
-        "img/product.png",
-        "product",
-        "Heart rate monitor Polar FT40",
-        "For the first steps in heart rate-based training.",
-        '67&#36',
-        '45&#36',
-        '[data-tab="fitness"]'
-    ).render();
-    new Product (
-        "img/product.png",
-        "product",
-        "Heart rate monitor Polar FT40",
-        "For the first steps in heart rate-based training.",
-        '67&#36',
-        '45&#36',
-        '[data-tab="fitness"]'
-    ).render();
-    new Product (
-        "img/product.png",
-        "product",
-        "Heart rate monitor Polar FT40",
-        "For the first steps in heart rate-based training.",
-        '67&#36',
-        '45&#36',
-        '[data-tab="running"]'
-    ).render();
-    new Product (
-        "img/product.png",
-        "product",
-        "Heart rate monitor Polar FT40",
-        "For the first steps in heart rate-based training.",
-        '67&#36',
-        '45&#36',
-        '[data-tab="triathlon"]'
-    ).render();
-    new Product (
-        "img/product.png",
-        "product",
-        "Heart rate monitor Polar FT40",
-        "For the first steps in heart rate-based training.",
-        '67&#36',
-        '45&#36',
-        '[data-tab="triathlon"]'
-    ).render();
-    
+    // Server catalog
 
+    async function fetchDataAndRender() {
+        const response = await fetch('http://localhost:3000/catalog');
+        const data = await response.json();
+        data.forEach(({img, alt, subtitle, descr, oldPrice, newPrice, parent }) => {
+        new Product (img, alt, subtitle, descr, oldPrice, newPrice, parent).render();
+        });
+        const buttonsOrder = document.querySelectorAll('[data-modal="order"]'),
+              modalDescr = document.querySelector('#order .modal__descr'),
+              productFront = document.querySelectorAll('.catalog-item__content'),
+              productBack = document.querySelectorAll('.catalog-item__list'),
+              catalogItem = document.querySelectorAll('.catalog-item');
+
+        buttonsOrder.forEach(button => button.addEventListener('click', () => {
+            const product = button.parentElement.parentElement;
+            modalDescr.textContent = product.querySelector('.catalog-item__subtitle').textContent;
+            openModal(modalOrder)
+        }));
+
+        catalogItem.forEach((item, i) => {
+            item.addEventListener('click', (e) => {
+                if(e.target && e.target.tagName == 'A'){
+                e.preventDefault();
+                productFront[i].classList.toggle('catalog-item__content_active');
+                productBack[i].classList.toggle('catalog-item__list_active');   
+                }
+            })
+        })
+
+    }
+      
+    fetchDataAndRender();
+      
+      
     // modal сonsultation
 
     const modalConsultation = document.querySelector('#consultation'),
           modalOrder = document.querySelector('#order'),
           buttonsConsult = document.querySelectorAll('[data-modal="consultation"]'),
-          buttonsOrder = document.querySelectorAll('[data-modal="order"]'),
           overlay = document.querySelector('.overlay');
-
+    
     const modalTimerId = setTimeout(() => {
             openModal(modalConsultation);
         }, 5000);
@@ -155,7 +115,6 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     buttonsConsult.forEach(button => button.addEventListener('click', () => openModal(modalConsultation)));
-    buttonsOrder.forEach(button => button.addEventListener('click', () => openModal(modalOrder)));
 
     overlay.addEventListener('click', (e)=> {
         if (e.target == overlay || e.target.getAttribute('data-close') == '') {
@@ -178,24 +137,14 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     })
 
-    // modal order
-
-    const modalDescr = document.querySelector('#order .modal__descr');
-
-    buttonsOrder.forEach(button => button.addEventListener('click', () => {
-        const product = button.parentElement.parentElement;
-        modalDescr.textContent = product.querySelector('.catalog-item__subtitle').textContent;
-    }));
-
 
     // tabs
 
     const tabs = document.querySelectorAll('.catalog__tab'),
-          catalogContent = document.querySelectorAll('.catalog__content'),
-          productFront = document.querySelectorAll('.catalog-item__content'),
-          productBack = document.querySelectorAll('.catalog-item__list'),
-          moreLink = document.querySelectorAll('[data-link="more"]'),
-          backLink = document.querySelectorAll('[data-link="back"]');
+          catalogContent = document.querySelectorAll('.catalog__content');
+          
+          
+          
     
     tabs.forEach((tab, i) => {
         tab.addEventListener('click', () => {
@@ -205,22 +154,6 @@ window.addEventListener('DOMContentLoaded', () => {
             catalogContent[i].classList.add('catalog__content_active');
         })
     });
-
-    moreLink.forEach((link, i) => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            productFront[i].classList.remove('catalog-item__content_active');
-            productBack[i].classList.add('catalog-item__list_active');    
-        })
-    })
-
-    backLink.forEach((link, i) => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            productFront[i].classList.add('catalog-item__content_active');
-            productBack[i].classList.remove('catalog-item__list_active');    
-        })
-    })
 
 
     // scroll top arrow
